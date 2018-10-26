@@ -1,22 +1,187 @@
-$main-color: skyblue;
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700');
+/***************** 기본 셋팅 *****************/
+// $bg-color: #3aafa9;
+// $text-color: #17252a;
+// $point1-color:#2b7a78;
+// $white1-color: #feffff;
+// $white2-color:#def2f1;
+
+$bg-color: #f8f8f8;
+$text-color: #2B2D2E;
+$point1-color:#595BD4;
+$point2-color:#3CABDB;
+$border-color:#ebebeb;
+$white1-color: #feffff;
+$white2-color:#f0f7fa;
+
 html {
-  font-size: 10px;
+ font-size: 10px;
 }
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  list-style: none;
-  font-size: 1.5rem;
-}
-body {
-  background-color: $main-color;
-  text-align: center;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 1.5rem;
+ // font-family: 'Noto Sans KR', sans-serif;
+ font-family: 'Do Hyeon', sans-serif;
+ box-sizing: content-box;
+ color:$text-color;
 }
 
-.input-list li {
-  counter-increment: number;
+body {
+ // background-image: url("./img/baseball-stadium.jpg");
+ // background-size: cover;
+ background-color:$bg-color;
 }
-.input-list li:before {
-  content: counter(number);
+
+
+/***************** 대제목 *****************/
+.header{
+ padding-top:30px;
+}
+h1 {
+ font-size: 6.5rem;
+ text-align: center;
+ letter-spacing: 1rem;
+ // font-family: 'Black Han Sans', sans-serif;
+ color: $text-color;
+ line-height: 1;
+
+}
+
+/***************** 게임의 컨텐츠 *****************/
+.contents {
+ margin-top: 4rem;
+}
+
+legend, label{ // 숨김컨텐츠
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ overflow: hidden;
+ margin: -1px;
+ clip: rect(0, 0, 0, 0);
+}
+
+fieldset {
+ text-align:center;
+ // transform: translateX(5%);
+}
+
+/**** 버튼 ****/
+button{cursor: pointer;}
+
+.add, .reset{
+ font-size: 2.8rem;
+ transition: all .1s;
+ background-color: $point2-color;
+ color: $white1-color;
+ text-align: center;
+ height:6rem;
+ margin-right: 5px;
+ padding:0 20px;
+ transform: translateY(-2px);
+ border-radius: 2px;
+}
+
+.add:focus, .reset:focus {
+ // background-image: linear-gradient(to right bottom, #618ae9, #3b5c99);
+ background-color: $point1-color;
+
+}
+
+.add:hover, .reset:hover {
+ transform: translateY(-7px);
+ background-color: $point1-color;
+}
+
+.add:click, .reset:click {
+ transform: translateY(-2px);
+}
+.btn-help{
+ position: fixed;
+ top:10px;
+ right:10px;
+ font-size:2rem;
+ padding:10px 10px;
+ background-color: $point1-color;
+ color:$white1-color;
+ border-radius: 2px
+}
+
+.help-paragraph{
+ display:none;
+ position: fixed;
+ top:10px;
+ right: 80px;
+ background-color: rgba(0, 0, 0, 0.8);
+ padding:30px;
+ font-family: 'Noto Sans KR', sans-serif;
+ color:$white1-color;
+ font-size:1.6rem;
+}
+.help-paragraph.on{
+ display:block;
+}
+
+/**** 인풋 ****/
+input {
+ font-size: 3rem;
+ text-align: center;
+ width:6rem;
+ height:6rem;
+ margin-right: 5px;
+ color:$text-color;
+ border:1px solid $border-color;
+ border-radius: 2px;
+}
+
+input:focus{
+ background-color: $white2-color;
+}
+
+
+/**** 회차 추가 목록 ****/
+.input-list {
+ counter-reset: li-count;
+ text-align: center;
+ margin-top:40px;
+}
+
+.input-list span {
+ display: inline-block;
+ background-color: $white1-color;
+ border:1px solid $border-color;
+ font-size: 3rem;
+ height: 6rem;
+ width: 6rem;
+ line-height: 6rem;
+ margin-right: 5px;
+ border-radius: 2px;
+}
+
+// 회차들이 수평으로 정렬되기 위한 빈칸
+.empty {
+ display: block;
+ margin-top:20px
+}
+.inningDisplay {
+ counter-increment: li-count;
+ display: inline-block;
+ margin-right: 5rem;
+ font-size: 3rem;
+}
+
+.inningDisplay:before {
+ content: counter(li-count) '회 ';
+ font-weight: bold;
+}
+
+// 점수판
+p{
+ display:inline-block;
+ font-size:3rem;
+ width:200px;
+ text-align: right;
 }
